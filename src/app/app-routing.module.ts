@@ -7,7 +7,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 //path: 用來匹配瀏覽器位址列中 URL 的字串。
 //component: 導航到該路由時，路由器應該建立的元件。
 //redirectTo 路由會把一個與空路徑“完全匹配”的 URL 重新導向到路徑為 '/dashboard' 的路由。
-const routes: Routes = [{ path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+const routes: Routes = [{path: '', redirectTo: '/dashboard', pathMatch: 'full'},
                         {path: 'heroes', component: HeroesComponent},
                         {path: 'dashboard', component: DashboardComponent} ];
 
