@@ -2,6 +2,7 @@ import { Component, OnInit,Input } from '@angular/core';//匯入input
 import { Hero } from '../data/hero';
 import { ActivatedRoute } from '@angular/router';
 import { HeroService } from '../hero.service';
+import { Location } from '@angular/common';
 
 //接收hero物件，並顯示
 @Component({
@@ -10,7 +11,7 @@ import { HeroService } from '../hero.service';
   styleUrls: ['./hero-detail.component.css']
 })
 export class HeroDetailComponent implements OnInit {
-  hero?:Hero;
+  hero: Hero | undefined;
   
   //ActivatedRoute 儲存著到這個 HeroDetailComponent 實例的路由資訊。 這個元件對從 URL 中提取的路由引數感興趣。 其中的 id 引數就是要顯示的英雄的 id。
   //HeroService 從遠端伺服器獲取英雄資料，本元件將使用它來獲取要顯示的英雄。
@@ -28,6 +29,10 @@ export class HeroDetailComponent implements OnInit {
     //paramMap 是一個從 URL 中提取的路由引數值的字典。 "id" 對應的值就是要獲取的英雄的 id。
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.heroService.getHero(id).subscribe(hero => this.hero = hero);
+  }
+
+  goBack(): void {
+    this.location.back();
   }
 
 }
